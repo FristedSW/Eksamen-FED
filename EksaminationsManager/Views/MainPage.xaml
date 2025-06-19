@@ -14,21 +14,21 @@
                 HorizontalOptions="Center" />
 
             <Button 
-                Text="Create Exam"
+                Text="📝 Create Exam"
                 SemanticProperties.Hint="Creates a new examination"
                 Command="{Binding CreateExamCommand}"
                 Style="{StaticResource PrimaryButton}"
                 HorizontalOptions="Center" />
 
             <Button 
-                Text="View Exams"
+                Text="📋 View Exams"
                 SemanticProperties.Hint="Shows list of all exams"
                 Command="{Binding ViewExamsCommand}"
                 Style="{StaticResource PrimaryButton}"
                 HorizontalOptions="Center" />
 
             <Button 
-                Text="View History"
+                Text="📊 View History"
                 SemanticProperties.Hint="Shows examination history"
                 Command="{Binding ViewHistoryCommand}"
                 Style="{StaticResource PrimaryButton}"

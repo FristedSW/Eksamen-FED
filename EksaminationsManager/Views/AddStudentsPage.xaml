@@ -5,18 +5,20 @@
              Title="{Binding Title}"
              BackgroundColor="{StaticResource BackgroundColor}">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Back" Command="{Binding GoBackCommand}" />
-    </ContentPage.ToolbarItems>
-
-    <Grid RowDefinitions="Auto, Auto, *, Auto">
+    <Grid RowDefinitions="Auto, Auto, Auto, *, Auto">
         
-        <!-- Back Button -->
-        <Button Grid.Row="0" 
-                Text="← Back to Exams" 
-                Command="{Binding GoBackCommand}"
-                Style="{StaticResource BackButton}"
-                Margin="10,5" />
+        <!-- Back Button and Refresh Button -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="10" Margin="10,5">
+            <Button Text="← Back to Exams" 
+                    Command="{Binding GoBackCommand}"
+                    Style="{StaticResource BackButton}"
+                    HorizontalOptions="Start" />
+            
+            <Button Text="🔄 Refresh" 
+                    Command="{Binding LoadStudentsCommand}"
+                    Style="{StaticResource PrimaryButton}"
+                    HorizontalOptions="End" />
+        </HorizontalStackLayout>
         
         <!-- Add Student Form -->
         <Frame Grid.Row="1" Style="{StaticResource CardFrame}">
@@ -31,15 +33,23 @@
                        Text="{Binding StudentName}"
                        Style="{StaticResource StandardEntry}" />
                 
-                <Button Text="Add Student" 
+                <Button Text="➕ Add Student" 
                         Command="{Binding AddStudentCommand}"
                         IsEnabled="{Binding IsNotBusy}"
                         Style="{StaticResource PrimaryButton}" />
             </VerticalStackLayout>
         </Frame>
         
+        <!-- Students List Header -->
+        <Label Grid.Row="2" 
+               Text="Students in this exam:" 
+               FontSize="16" 
+               FontAttributes="Bold"
+               Margin="10,5"
+               TextColor="{StaticResource TextColor}" />
+        
         <!-- Students List -->
-        <CollectionView Grid.Row="2" 
+        <CollectionView Grid.Row="3" 
                         ItemsSource="{Binding Students}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -62,7 +72,7 @@
         </CollectionView>
         
         <!-- Activity Indicator -->
-        <ActivityIndicator Grid.Row="3" 
+        <ActivityIndicator Grid.Row="4" 
                           IsVisible="{Binding IsBusy}" 
                           IsRunning="{Binding IsBusy}"
                           HorizontalOptions="Center"

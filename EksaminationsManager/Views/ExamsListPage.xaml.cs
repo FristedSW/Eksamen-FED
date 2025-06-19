@@ -13,6 +13,10 @@ public partial class ExamsListPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await ((ExamsListViewModel)BindingContext).LoadExamsCommand.ExecuteAsync(null);
+        
+        System.Diagnostics.Debug.WriteLine("ExamsListPage OnAppearing called");
+        
+        // Load exams when page appears
+        await ((ExamsListViewModel)BindingContext).OnPageAppearing();
     }
 } 

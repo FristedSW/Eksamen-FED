@@ -30,9 +30,5 @@ public class ExaminationDbContext : DbContext
             .HasForeignKey<ExaminationResult>(er => er.StudentId)
             .OnDelete(DeleteBehavior.Cascade);
             
-        // Remove the problematic unique constraint that was causing save errors
-        // modelBuilder.Entity<Student>()
-        //     .HasIndex(s => new { s.ExamId, s.ExamOrder })
-        //     .IsUnique();
     }
 } 

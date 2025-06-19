@@ -28,7 +28,7 @@
         
         <!-- Start Exam Button -->
         <Button Grid.Row="2" 
-                Text="Start Exam" 
+                Text="▶️ Start Exam" 
                 Command="{Binding StartExamCommand}"
                 IsVisible="{Binding IsExamStarted, Converter={StaticResource InverseBoolConverter}}"
                 Style="{StaticResource PrimaryButton}"
@@ -40,7 +40,7 @@
                Style="{StaticResource CardFrame}">
             <VerticalStackLayout>
                 <Label Text="Question Drawing" Style="{StaticResource SubHeaderLabel}" />
-                <Button Text="Draw Question" 
+                <Button Text="🎲 Draw Question" 
                         Command="{Binding DrawQuestionCommand}"
                         IsVisible="{Binding IsQuestionDrawn, Converter={StaticResource InverseBoolConverter}}"
                         Style="{StaticResource PrimaryButton}" />
@@ -58,7 +58,7 @@
                Style="{StaticResource CardFrame}">
             <VerticalStackLayout>
                 <Label Text="Examination Timer" Style="{StaticResource SubHeaderLabel}" />
-                <Button Text="Start Examination" 
+                <Button Text="⏱️ Start Examination" 
                         Command="{Binding StartExaminationCommand}"
                         IsVisible="{Binding IsExaminationStarted, Converter={StaticResource InverseBoolConverter}}"
                         Style="{StaticResource PrimaryButton}" />
@@ -75,20 +75,11 @@
                        HorizontalOptions="Center"
                        TextColor="{StaticResource TextColor}" />
                 
-                <!-- Timer Controls -->
-                <HorizontalStackLayout IsVisible="{Binding IsExaminationStarted}" Spacing="10">
-                    <Button Text="Pause" 
-                            Command="{Binding PauseExaminationCommand}"
-                            IsVisible="{Binding IsExaminationPaused, Converter={StaticResource InverseBoolConverter}}"
-                            Style="{StaticResource PrimaryButton}"
-                            HorizontalOptions="FillAndExpand" />
-                    
-                    <Button Text="Resume" 
-                            Command="{Binding ResumeExaminationCommand}"
-                            IsVisible="{Binding IsExaminationPaused}"
-                            Style="{StaticResource PrimaryButton}"
-                            HorizontalOptions="FillAndExpand" />
-                </HorizontalStackLayout>
+                <!-- End Examination Button -->
+                <Button Text="⏹️ End Examination" 
+                        Command="{Binding EndExaminationCommand}"
+                        IsVisible="{Binding IsExaminationStarted}"
+                        Style="{StaticResource PrimaryButton}" />
             </VerticalStackLayout>
         </Frame>
         
@@ -118,8 +109,8 @@
                     </Picker.Items>
                 </Picker>
                 
-                <Button Text="Save Grade &amp; Next Student" 
-                        Command="{Binding NextStudentCommand}"
+                <Button Text="💾 Save and Move On" 
+                        Command="{Binding SaveAndMoveOnCommand}"
                         IsEnabled="{Binding IsNotBusy}"
                         Style="{StaticResource PrimaryButton}" />
             </VerticalStackLayout>

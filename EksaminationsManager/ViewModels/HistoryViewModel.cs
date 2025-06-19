@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EksaminationsManager.Models;
 using EksaminationsManager.Services;
+using System.Collections.ObjectModel;
 
 namespace EksaminationsManager.ViewModels;
 
@@ -10,7 +11,7 @@ public partial class HistoryViewModel : BaseViewModel
     private readonly IExaminationService _examinationService;
     
     [ObservableProperty]
-    private List<Exam> _exams = new();
+    private ObservableCollection<Exam> _exams = new();
     
     [ObservableProperty]
     private List<ExaminationResult> _results = new();
@@ -44,7 +45,15 @@ public partial class HistoryViewModel : BaseViewModel
         {
             var allExams = await _examinationService.GetAllExamsAsync();
             // Only show completed exams
-            Exams = allExams.Where(e => e.IsCompleted).OrderByDescending(e => e.CompletedAt).ToList();
+            var completedExams = allExams.Where(e => e.IsCompleted).OrderByDescending(e => e.CompletedAt).ToList();
+            
+            // Clear and repopulate the ObservableCollection
+            Exams.Clear();
+            foreach (var exam in completedExams)
+            {
+                Exams.Add(exam);
+            }
+            
             System.Diagnostics.Debug.WriteLine($"Loaded {Exams.Count} completed exams");
         }
         catch (Exception ex)

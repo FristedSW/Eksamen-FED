@@ -15,9 +15,6 @@ public partial class ExamSessionViewModel : BaseViewModel
     private IDispatcherTimer? _timer;
     private DateTime _examStartTime;
     private DateTime _examinationStartTime;
-    private DateTime _pauseStartTime;
-    private TimeSpan _totalPausedTime = TimeSpan.Zero;
-    private bool _isPaused = false;
     private bool _isExaminationStopped = false;
     
     [ObservableProperty]
@@ -58,9 +55,6 @@ public partial class ExamSessionViewModel : BaseViewModel
     
     [ObservableProperty]
     private bool _isExaminationStarted = false;
-    
-    [ObservableProperty]
-    private bool _isExaminationPaused = false;
     
     [ObservableProperty]
     private bool _isExaminationEnded = false;
@@ -114,6 +108,9 @@ public partial class ExamSessionViewModel : BaseViewModel
             return;
         }
         
+        // Stop any existing timer
+        StopTimer();
+        
         IsExamStarted = true;
         _examStartTime = DateTime.Now;
         _timer = _dispatcher.CreateTimer();
@@ -129,26 +126,6 @@ public partial class ExamSessionViewModel : BaseViewModel
     }
     
     [RelayCommand]
-    private void PauseExam()
-    {
-        if (_timer != null)
-        {
-            if (!_isPaused)
-            {
-                _timer.Stop();
-                _isPaused = true;
-                _pauseStartTime = DateTime.Now;
-            }
-            else
-            {
-                _timer.Start();
-                _isPaused = false;
-                _totalPausedTime += DateTime.Now - _pauseStartTime;
-            }
-        }
-    }
-    
-    [RelayCommand]
     private async Task DrawQuestionAsync()
     {
         if (CurrentExam == null) return;
@@ -161,11 +138,13 @@ public partial class ExamSessionViewModel : BaseViewModel
     private void StartExamination()
     {
         if (CurrentExam == null) return;
+        
+        // Stop any existing timer
+        StopTimer();
+        
         IsExaminationStarted = true;
         _examinationStartTime = DateTime.Now;
         ElapsedTime = TimeSpan.Zero;
-        _totalPausedTime = TimeSpan.Zero;
-        _isPaused = false;
         _isExaminationStopped = false;
         _timer = _dispatcher.CreateTimer();
         if (_timer != null)
@@ -177,33 +156,31 @@ public partial class ExamSessionViewModel : BaseViewModel
     }
     
     [RelayCommand]
-    private void PauseExamination()
+    private void EndExamination()
     {
-        if (_timer != null && IsExaminationStarted && !_isPaused && !_isExaminationStopped)
+        if (_timer != null && IsExaminationStarted)
+        {
+            StopTimer();
+            _isExaminationStopped = true;
+            IsExaminationEnded = true;
+        }
+    }
+    
+    private void StopTimer()
+    {
+        if (_timer != null)
         {
             _timer.Stop();
-            IsExaminationPaused = true;
-            _isPaused = true;
-            _pauseStartTime = DateTime.Now;
+            _timer.Tick -= Timer_Tick;
+            _timer.Tick -= ExaminationTimer_Tick;
+            _timer = null;
         }
     }
     
     [RelayCommand]
-    private void ResumeExamination()
+    private async Task SaveAndMoveOnAsync()
     {
-        if (_timer != null && IsExaminationStarted && _isPaused && !_isExaminationStopped)
-        {
-            _timer.Start();
-            IsExaminationPaused = false;
-            _isPaused = false;
-            _totalPausedTime += DateTime.Now - _pauseStartTime;
-        }
-    }
-    
-    [RelayCommand]
-    private async Task SaveGradeAsync()
-    {
-        if (CurrentStudent == null || CurrentExam == null) return;
+        if (CurrentStudent == null) return;
         
         if (IsBusy) return;
         
@@ -215,86 +192,59 @@ public partial class ExamSessionViewModel : BaseViewModel
             int[] grades = { 0, 2, 4, 7, 10, 12 };
             int grade = grades[SelectedGradeIndex];
             
-            var result = new ExaminationResult
+            // Create summary message
+            var summary = $"Student: {CurrentStudent.Name} ({CurrentStudent.StudentId})\n" +
+                         $"Question: {CurrentQuestionNumber}\n" +
+                         $"Time: {ElapsedTime:mm\\:ss}\n" +
+                         $"Grade: {grade}\n" +
+                         $"Notes: {(string.IsNullOrWhiteSpace(Notes) ? "None" : Notes)}";
+            
+            // Show summary popup
+            var result = await Shell.Current.DisplayAlert(
+                "Summary", 
+                summary, 
+                "Save & Continue", 
+                "Cancel");
+            
+            if (result)
             {
-                StudentId = CurrentStudent.Id,
-                QuestionNumber = CurrentQuestionNumber,
-                ActualExaminationTime = ElapsedTime,
-                Notes = Notes,
-                Grade = grade
-            };
-            
-            await _examinationService.SaveExaminationResultAsync(result);
-            
-            if (Shell.Current != null)
-            {
-                await Shell.Current.DisplayAlert("Success", "Grade saved successfully!", "OK");
-            }
-        }
-        catch (Exception ex)
-        {
-            if (Shell.Current != null)
-            {
-                await Shell.Current.DisplayAlert("Error", $"Failed to save grade: {ex.Message}", "OK");
-            }
-        }
-        finally
-        {
-            IsBusy = false;
-        }
-    }
-    
-    [RelayCommand]
-    private async Task NextStudentAsync()
-    {
-        if (CurrentStudent == null) return;
-        
-        if (IsBusy) return;
-        
-        IsBusy = true;
-        
-        try
-        {
-            // Save current student's result
-            int[] grades = { 0, 2, 4, 7, 10, 12 };
-            int grade = grades[SelectedGradeIndex];
-            
-            var result = new ExaminationResult
-            {
-                StudentId = CurrentStudent.Id,
-                QuestionNumber = CurrentQuestionNumber,
-                ActualExaminationTime = ElapsedTime,
-                Notes = Notes,
-                Grade = grade
-            };
-            
-            await _examinationService.SaveExaminationResultAsync(result);
-            
-            // Move to next student
-            CurrentStudentIndex++;
-            
-            if (CurrentStudentIndex < Students.Count)
-            {
-                CurrentStudent = Students[CurrentStudentIndex];
-                ResetExaminationState();
-                
-                if (Shell.Current != null)
+                var examinationResult = new ExaminationResult
                 {
-                    await Shell.Current.DisplayAlert("Next Student", $"Moving to student #{CurrentStudent.ExamOrder} of {Students.Count}", "OK");
-                }
-            }
-            else
-            {
-                // Exam completed - mark it as finished
-                await MarkExamAsCompleted();
+                    StudentId = CurrentStudent.Id,
+                    QuestionNumber = CurrentQuestionNumber,
+                    ActualExaminationTime = ElapsedTime,
+                    Notes = Notes,
+                    Grade = grade
+                };
                 
-                if (Shell.Current != null)
+                await _examinationService.SaveExaminationResultAsync(examinationResult);
+                
+                // Move to next student
+                CurrentStudentIndex++;
+                
+                if (CurrentStudentIndex < Students.Count)
                 {
-                    await Shell.Current.DisplayAlert("Exam Complete", "All students have been examined!", "OK");
+                    CurrentStudent = Students[CurrentStudentIndex];
+                    ResetExaminationState();
+                    
+                    if (Shell.Current != null)
+                    {
+                        await Shell.Current.DisplayAlert("Next Student", $"Moving to student #{CurrentStudent.ExamOrder} of {Students.Count}", "OK");
+                    }
                 }
-                
-                // Navigate back to exams list
-                await Shell.Current.GoToAsync("..");
+                else
+                {
+                    // Exam completed - mark it as finished
+                    await MarkExamAsCompleted();
+                    
+                    if (Shell.Current != null)
+                    {
+                        await Shell.Current.DisplayAlert("Exam Complete", "All students have been examined!", "OK");
+                    }
+                    
+                    // Navigate back to exams list
+                    await Shell.Current.GoToAsync("..");
+                }
             }
         }
         catch (Exception ex)
@@ -322,20 +272,16 @@ public partial class ExamSessionViewModel : BaseViewModel
     
     private void ResetExaminationState()
     {
+        StopTimer();
         IsQuestionDrawn = false;
         IsExaminationStarted = false;
-        IsExaminationPaused = false;
         IsExaminationEnded = false;
         _isExaminationStopped = false;
         CurrentQuestionNumber = 0;
         Notes = string.Empty;
         SelectedGradeIndex = 3;
         ElapsedTime = TimeSpan.Zero;
-        _totalPausedTime = TimeSpan.Zero;
-        _isPaused = false;
         RemainingTime = TimeSpan.FromMinutes(CurrentExam?.ExaminationTimeMinutes ?? 30);
-        _timer?.Stop();
-        _timer = null;
     }
     
     private async Task GetRandomQuestionAsync()
@@ -347,19 +293,19 @@ public partial class ExamSessionViewModel : BaseViewModel
     
     private void Timer_Tick(object? sender, EventArgs e)
     {
-        if (IsExamStarted && !_isPaused)
+        if (IsExamStarted && !IsExaminationStarted)
         {
             _dispatcher.Dispatch(() =>
             {
-                var elapsed = DateTime.Now - _examStartTime - _totalPausedTime;
+                var elapsed = DateTime.Now - _examStartTime;
                 var totalTime = TimeSpan.FromMinutes(CurrentExam?.ExaminationTimeMinutes ?? 30);
                 var remaining = totalTime - elapsed;
                 
                 if (remaining <= TimeSpan.Zero)
                 {
                     RemainingTime = TimeSpan.Zero;
-                    _timer?.Stop();
-                    _ = NextStudentAsync();
+                    StopTimer();
+                    _ = SaveAndMoveOnAsync();
                 }
                 else
                 {
@@ -371,11 +317,11 @@ public partial class ExamSessionViewModel : BaseViewModel
     
     private void ExaminationTimer_Tick(object? sender, EventArgs e)
     {
-        if (IsExaminationStarted && !_isPaused && !_isExaminationStopped)
+        if (IsExaminationStarted && !_isExaminationStopped)
         {
             _dispatcher.Dispatch(() =>
             {
-                var totalElapsed = DateTime.Now - _examinationStartTime - _totalPausedTime;
+                var totalElapsed = DateTime.Now - _examinationStartTime;
                 ElapsedTime = totalElapsed;
                 
                 var totalTime = TimeSpan.FromMinutes(CurrentExam?.ExaminationTimeMinutes ?? 30);
@@ -385,9 +331,9 @@ public partial class ExamSessionViewModel : BaseViewModel
                 {
                     RemainingTime = TimeSpan.Zero;
                     ElapsedTime = totalTime;
-                    _timer?.Stop();
+                    StopTimer();
                     _isExaminationStopped = true;
-                    _ = NextStudentAsync();
+                    _ = SaveAndMoveOnAsync();
                 }
                 else
                 {
@@ -400,6 +346,7 @@ public partial class ExamSessionViewModel : BaseViewModel
     [RelayCommand]
     private async Task GoBackAsync()
     {
+        StopTimer();
         await Shell.Current.GoToAsync("..");
     }
     

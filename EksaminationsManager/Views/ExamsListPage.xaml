@@ -5,17 +5,23 @@
              Title="{Binding Title}"
              BackgroundColor="{StaticResource BackgroundColor}">
 
-    <Grid RowDefinitions="Auto, *">
+    <Grid RowDefinitions="Auto, Auto, *">
         
-        <!-- Back Button -->
-        <Button Grid.Row="0" 
-                Text="← Back" 
-                Command="{Binding GoBackCommand}"
-                Style="{StaticResource BackButton}"
-                Margin="10,5" />
+        <!-- Back Button and Refresh Button -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="10" Margin="10,5">
+            <Button Text="← Back" 
+                    Command="{Binding GoBackCommand}"
+                    Style="{StaticResource BackButton}"
+                    HorizontalOptions="Start" />
+            
+            <Button Text="🔄 Refresh" 
+                    Command="{Binding LoadExamsCommand}"
+                    Style="{StaticResource PrimaryButton}"
+                    HorizontalOptions="End" />
+        </HorizontalStackLayout>
         
         <!-- Exams List -->
-        <CollectionView Grid.Row="1" 
+        <CollectionView Grid.Row="2" 
                         ItemsSource="{Binding Exams}"
                         Margin="10,5">
             <CollectionView.ItemTemplate>
@@ -34,13 +40,13 @@
                             </VerticalStackLayout>
                             
                             <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="2" Spacing="10" Margin="0,10,0,0">
-                                <Button Text="Add Students" 
+                                <Button Text="👥 Add Students" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddStudentsForExamCommand}"
                                         CommandParameter="{Binding Id}"
                                         Style="{StaticResource PrimaryButton}"
                                         HorizontalOptions="FillAndExpand" />
                                 
-                                <Button Text="Start Exam" 
+                                <Button Text="▶️ Start Exam" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.StartExamForExamCommand}"
                                         CommandParameter="{Binding Id}"
                                         Style="{StaticResource PrimaryButton}"
@@ -53,7 +59,7 @@
         </CollectionView>
         
         <!-- Empty State -->
-        <VerticalStackLayout Grid.Row="1" 
+        <VerticalStackLayout Grid.Row="2" 
                             IsVisible="{Binding Exams.Count, Converter={StaticResource EqualToZeroConverter}}"
                             VerticalOptions="Center"
                             HorizontalOptions="Center">

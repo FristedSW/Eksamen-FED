@@ -15,10 +15,23 @@ public class ExaminationService : IExaminationService
     
     public async Task<List<Exam>> GetAllExamsAsync()
     {
-        return await _context.Exams
+        System.Diagnostics.Debug.WriteLine("GetAllExamsAsync called - fetching fresh data from database");
+        
+        // Force a fresh query by detaching any existing entities
+        _context.ChangeTracker.Clear();
+        
+        var exams = await _context.Exams
             .Include(e => e.Students)
             .OrderByDescending(e => e.CreatedAt)
             .ToListAsync();
+            
+        System.Diagnostics.Debug.WriteLine($"GetAllExamsAsync returned {exams.Count} exams");
+        foreach (var exam in exams)
+        {
+            System.Diagnostics.Debug.WriteLine($"Exam {exam.Id}: {exam.CourseName} - {exam.Students.Count} students");
+        }
+        
+        return exams;
     }
     
     public async Task<Exam?> GetExamByIdAsync(int id)

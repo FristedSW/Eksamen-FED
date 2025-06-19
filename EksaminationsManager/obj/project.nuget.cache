@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MDbgo9FZLCM=",
+  "dgSpecHash": "9vSdGB1plZM=",
   "success": true,
   "projectFilePath": "C:\\Users\\jeppe\\skole\\eksamen\\Eksamen-FED\\EksaminationsManager\\EksaminationsManager.csproj",
   "expectedPackageFiles": [
@@ -187,9 +187,9 @@
     "C:\\Users\\jeppe\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.9.0.2\\xamarin.kotlinx.coroutines.core.jvm.1.9.0.2.nupkg.sha512",
     "C:\\Users\\jeppe\\.nuget\\packages\\xamarin.kotlinx.serialization.core\\1.7.3.2\\xamarin.kotlinx.serialization.core.1.7.3.2.nupkg.sha512",
     "C:\\Users\\jeppe\\.nuget\\packages\\xamarin.kotlinx.serialization.core.jvm\\1.7.3.2\\xamarin.kotlinx.serialization.core.jvm.1.7.3.2.nupkg.sha512",
-    "C:\\Users\\jeppe\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.2\\microsoft.netcore.app.ref.9.0.2.nupkg.sha512",
-    "C:\\Users\\jeppe\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.2\\microsoft.netcore.app.ref.9.0.2.nupkg.sha512",
-    "C:\\Users\\jeppe\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.2\\microsoft.netcore.app.ref.9.0.2.nupkg.sha512",
+    "C:\\Users\\jeppe\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.6\\microsoft.netcore.app.ref.9.0.6.nupkg.sha512",
+    "C:\\Users\\jeppe\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.6\\microsoft.netcore.app.ref.9.0.6.nupkg.sha512",
+    "C:\\Users\\jeppe\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.6\\microsoft.netcore.app.ref.9.0.6.nupkg.sha512",
     "C:\\Users\\jeppe\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.57\\microsoft.windows.sdk.net.ref.10.0.19041.57.nupkg.sha512"
   ],
   "logs": []

@@ -73,7 +73,7 @@
                     Style="{StaticResource StandardTimePicker}" />
         
         <Button Grid.Row="14" 
-                Text="Create Exam" 
+                Text="✅ Create Exam" 
                 Command="{Binding CreateExamCommand}"
                 IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource PrimaryButton}"

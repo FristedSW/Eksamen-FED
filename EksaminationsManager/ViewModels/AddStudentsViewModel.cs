@@ -2,6 +2,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EksaminationsManager.Models;
 using EksaminationsManager.Services;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EksaminationsManager.ViewModels;
 
@@ -20,7 +23,7 @@ public partial class AddStudentsViewModel : BaseViewModel
     private string _studentName = string.Empty;
     
     [ObservableProperty]
-    private List<Student> _students = new();
+    private ObservableCollection<Student> _students = new();
     
     public AddStudentsViewModel(IExaminationService examinationService)
     {
@@ -37,7 +40,12 @@ public partial class AddStudentsViewModel : BaseViewModel
         
         try
         {
-            Students = await _examinationService.GetStudentsForExamAsync(ExamId);
+            var studentsList = await _examinationService.GetStudentsForExamAsync(ExamId);
+            Students.Clear();
+            foreach (var student in studentsList)
+            {
+                Students.Add(student);
+            }
         }
         catch (Exception ex)
         {
@@ -83,7 +91,7 @@ public partial class AddStudentsViewModel : BaseViewModel
             StudentId = string.Empty;
             StudentName = string.Empty;
             
-            // Reload students
+            // Reload students - this will update the ObservableCollection automatically
             await LoadStudentsAsync();
             
             if (Shell.Current != null)
@@ -94,7 +102,6 @@ public partial class AddStudentsViewModel : BaseViewModel
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"Failed to add student: {ex.Message}");
-            System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
             if (Shell.Current != null)
             {
                 await Shell.Current.DisplayAlert("Error", $"Failed to add student: {ex.Message}", "OK");

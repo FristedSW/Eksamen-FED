@@ -128,7 +128,7 @@
         
         <!-- Close Button -->
         <Button Grid.Row="3" 
-                Text="Close" 
+                Text="❌ Close" 
                 Command="{Binding CloseCommand}"
                 Style="{StaticResource PrimaryButton}"
                 Margin="20,10" />
