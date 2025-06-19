@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Home } from './components/Home';
-import { CreateExam } from './components/CreateExam';
-import { AddStudents } from './components/AddStudents';
-import { StartExam } from './components/StartExam';
-import { ViewHistory } from './components/ViewHistory';
+import { HomePage } from './pages/HomePage';
+import { CreateExamPage } from './pages/CreateExamPage';
+import { AddStudentsPage } from './pages/AddStudentsPage';
+import { StartExam } from './pages/StartExamPage';
+import { ViewHistory } from './pages/ViewHistoryPage';
 
 function App() {
   return (
@@ -28,9 +28,9 @@ function App() {
         {/* Main Content */}
         <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 mt-16 flex-1 flex flex-col overflow-hidden">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/create-exam" element={<CreateExam />} />
-            <Route path="/add-students" element={<AddStudents />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/create-exam" element={<CreateExamPage />} />
+            <Route path="/add-students" element={<AddStudentsPage />} />
             <Route path="/start-exam" element={<StartExam />} />
             <Route path="/history" element={<ViewHistory />} />
           </Routes>
