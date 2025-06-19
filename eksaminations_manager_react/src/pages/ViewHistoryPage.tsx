@@ -2,22 +2,21 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { api } from '../services/api';
 import { Exam, Student, ExamSession, StudentWithSession } from '../types';
-import { 
-  Button, 
-  Card,
-  LoadingSpinner, 
-  PageHeader,
-  StatisticsCard,
-  GradeDistributionCard,
-  ResultsTable,
-  ExamInfoCard
-} from '../components';
+
 import { 
   calculateAverageGrade, 
   getGradeDistribution, 
   getAverageExaminationTime,
   getCompletionRate 
 } from '../utils/examCalculations';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { Button } from '../components/ui/Button';
+import { Card } from '../components/ui/Card';
+import { PageHeader } from '../components/ui/PageHeader';
+import { ExamInfoCard } from '../components/cards/ExamInfoCard';
+import { StatisticsCard } from '../components/cards/StatisticsCard';
+import { GradeDistributionCard } from '../components/cards/GradeDistributionCard';
+import { ResultsTable } from '../components/tables/ResultsTable';
 
 export const ViewHistory: React.FC = () => {
   const navigate = useNavigate();

@@ -208,7 +208,7 @@
       "numberOfQuestions": 1,
       "examinationTime": 15,
       "startTime": "11:01",
-      "status": "created"
+      "status": "completed"
     },
     {
       "id": "83a7",
@@ -219,6 +219,16 @@
       "examinationTime": 15,
       "startTime": "11:11",
       "status": "created"
+    },
+    {
+      "id": "03b8",
+      "examTerm": "awd",
+      "courseName": "awd",
+      "date": "1111-11-11",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "11:11",
+      "status": "completed"
     }
   ],
   "students": [
@@ -470,6 +480,20 @@
     {
       "id": "36fb",
       "examId": "68fb",
+      "studentId": "12",
+      "name": "12",
+      "order": 1
+    },
+    {
+      "id": "3dc6",
+      "examId": "68fb",
+      "studentId": "12",
+      "name": "12",
+      "order": 2
+    },
+    {
+      "id": "a21a",
+      "examId": "03b8",
       "studentId": "12",
       "name": "12",
       "order": 1
@@ -879,6 +903,42 @@
       "completed": true,
       "startTime": 1750352801995,
       "endTime": 1750352801995
+    },
+    {
+      "id": "7a9e",
+      "examId": "03b8",
+      "studentId": "a21a",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "grade": "12",
+      "notes": "",
+      "completed": true,
+      "startTime": 1750353648913,
+      "endTime": 1750353648913
+    },
+    {
+      "id": "e538",
+      "examId": "68fb",
+      "studentId": "36fb",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "grade": "10",
+      "notes": "½12",
+      "completed": true,
+      "startTime": 1750353687641,
+      "endTime": 1750353687641
+    },
+    {
+      "id": "c178",
+      "examId": "68fb",
+      "studentId": "3dc6",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "grade": "12",
+      "notes": "1212",
+      "completed": true,
+      "startTime": 1750353701732,
+      "endTime": 1750353701732
     }
   ]
 }

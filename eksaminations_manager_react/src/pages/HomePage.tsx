@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useExams } from '../hooks/useExams';
 import { calculateAverageGrade } from '../utils/gradeUtils';
-import { 
-  ExamTable, 
-  Button, 
-  TabNavigation, 
-  PageHeader, 
-  LoadingSpinner, 
-  ErrorMessage 
-} from '../components';
+import { ErrorMessage } from '../components/ui/ErrorMessage';
+import { PageHeader } from '../components/ui/PageHeader';
+import { Button } from '../components/ui/Button';
+import { TabNavigation } from '../components/ui/TabNavigation';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { ExamTable } from '../components/tables/ExamTable';
+
 
 export const HomePage: React.FC = () => {
   const { exams, examStudents, examSessions, isLoading, error } = useExams();

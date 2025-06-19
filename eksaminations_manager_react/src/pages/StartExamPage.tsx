@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { 
-  Button, 
-  Card, 
-  Timer, 
-  LoadingSpinner, 
-  ErrorMessage,
-  StudentProgressCard,
-  QuestionCard,
-  NotesGradeForm,
-  StudentSummaryModal
-} from '../components';
 import { useExamData } from '../hooks/useExamData';
 import { useExamSession } from '../hooks/useExamSession';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { ErrorMessage } from '../components/ui/ErrorMessage';
+import { Card } from '../components/ui/Card';
+import { Button } from '../components/ui/Button';
+import { StudentProgressCard } from '../components/cards/StudentProgressCard';
+import { QuestionCard } from '../components/cards/QuestionCard';
+import { NotesGradeForm } from '../components/forms/NotesGradeForm';
+import { StudentSummaryModal } from '../components/modals/StudentSummaryModal';
+import { Timer } from '../components/ui/Timer';
 
 export const StartExam: React.FC = () => {
   const navigate = useNavigate();

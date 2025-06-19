@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { api } from '../services/api';
 import { useStudents } from '../hooks/useStudents';
-import { 
-  AddStudentForm, 
-  StudentTable, 
-  Card, 
-  Button, 
-  ExamInfoCard, 
-  LoadingSpinner
-} from '../components';
+import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { Button } from '../components/ui/Button';
+import { Card } from '../components/ui/Card';
+import { AddStudentForm } from '../components/forms/AddStudentForm';
+import { StudentTable } from '../components/tables/StudentTable';
+import { ExamInfoCard } from '../components/cards/ExamInfoCard';
+
 
 export const AddStudentsPage: React.FC = () => {
   const navigate = useNavigate();

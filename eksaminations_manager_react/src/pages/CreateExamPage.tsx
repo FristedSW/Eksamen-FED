@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useExams } from '../hooks/useExams';
-import { CreateExamForm, PageHeader } from '../components';
+import { PageHeader } from '../components/ui/PageHeader';
+import { CreateExamForm } from '../components/forms/CreateExamForm';
+
 
 export const CreateExamPage: React.FC = () => {
   const { createExam } = useExams();
