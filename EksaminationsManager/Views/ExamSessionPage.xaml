@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="EksaminationsManager.Views.ExamSessionPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+        
+        <!-- Back Button -->
+        <Button Grid.Row="0" 
+                Text="← Back" 
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource BackButton}"
+                Margin="10,5" />
+        
+        <!-- Exam Info -->
+        <Frame Grid.Row="1" 
+               IsVisible="{Binding IsExamStarted}"
+               Style="{StaticResource CardFrame}">
+            <VerticalStackLayout>
+                <Label Text="{Binding CurrentExam.CourseName}" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextColor}" />
+                <Label Text="{Binding CurrentExam.ExamTerm}" FontSize="16" TextColor="{StaticResource TextColor}" />
+                <Label Text="{Binding CurrentStudent.Name, StringFormat='Current Student: {0}'}" FontSize="18" TextColor="{StaticResource TextColor}" />
+                <Label Text="{Binding CurrentStudent.StudentId, StringFormat='ID: {0}'}" FontSize="14" TextColor="{StaticResource TextSecondaryColor}" />
+            </VerticalStackLayout>
+        </Frame>
+        
+        <!-- Start Exam Button -->
+        <Button Grid.Row="2" 
+                Text="Start Exam" 
+                Command="{Binding StartExamCommand}"
+                IsVisible="{Binding IsExamStarted, Converter={StaticResource InverseBoolConverter}}"
+                Style="{StaticResource PrimaryButton}"
+                Margin="10,5" />
+        
+        <!-- Question Drawing -->
+        <Frame Grid.Row="3" 
+               IsVisible="{Binding IsExamStarted}"
+               Style="{StaticResource CardFrame}">
+            <VerticalStackLayout>
+                <Label Text="Question Drawing" Style="{StaticResource SubHeaderLabel}" />
+                <Button Text="Draw Question" 
+                        Command="{Binding DrawQuestionCommand}"
+                        IsVisible="{Binding IsQuestionDrawn, Converter={StaticResource InverseBoolConverter}}"
+                        Style="{StaticResource PrimaryButton}" />
+                <Label Text="{Binding CurrentQuestionNumber, StringFormat='Question: {0}'}" 
+                       IsVisible="{Binding IsQuestionDrawn}"
+                       FontSize="24" 
+                       HorizontalOptions="Center"
+                       TextColor="{StaticResource TextColor}" />
+            </VerticalStackLayout>
+        </Frame>
+        
+        <!-- Examination Timer -->
+        <Frame Grid.Row="4" 
+               IsVisible="{Binding IsQuestionDrawn}"
+               Style="{StaticResource CardFrame}">
+            <VerticalStackLayout>
+                <Label Text="Examination Timer" Style="{StaticResource SubHeaderLabel}" />
+                <Button Text="Start Examination" 
+                        Command="{Binding StartExaminationCommand}"
+                        IsVisible="{Binding IsExaminationStarted, Converter={StaticResource InverseBoolConverter}}"
+                        Style="{StaticResource PrimaryButton}" />
+                
+                <Label Text="{Binding RemainingTime, StringFormat='Remaining: {0:mm\\:ss}'}" 
+                       IsVisible="{Binding IsExaminationStarted}"
+                       FontSize="32" 
+                       HorizontalOptions="Center"
+                       TextColor="{StaticResource TextColor}" />
+                
+                <Label Text="{Binding ElapsedTime, StringFormat='Elapsed: {0:mm\\:ss}'}" 
+                       IsVisible="{Binding IsExaminationStarted}"
+                       FontSize="16" 
+                       HorizontalOptions="Center"
+                       TextColor="{StaticResource TextColor}" />
+                
+                <!-- Timer Controls -->
+                <HorizontalStackLayout IsVisible="{Binding IsExaminationStarted}" Spacing="10">
+                    <Button Text="Pause" 
+                            Command="{Binding PauseExaminationCommand}"
+                            IsVisible="{Binding IsExaminationPaused, Converter={StaticResource InverseBoolConverter}}"
+                            Style="{StaticResource PrimaryButton}"
+                            HorizontalOptions="FillAndExpand" />
+                    
+                    <Button Text="Resume" 
+                            Command="{Binding ResumeExaminationCommand}"
+                            IsVisible="{Binding IsExaminationPaused}"
+                            Style="{StaticResource PrimaryButton}"
+                            HorizontalOptions="FillAndExpand" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+        
+        <!-- Notes and Grade - Available from the start -->
+        <Frame Grid.Row="5" 
+               IsVisible="{Binding IsExamStarted}"
+               Style="{StaticResource CardFrame}">
+            <VerticalStackLayout>
+                <Label Text="Notes" Style="{StaticResource SubHeaderLabel}" />
+                <Editor Placeholder="Enter notes about the student's performance..." 
+                        Text="{Binding Notes}"
+                        HeightRequest="100"
+                        TextColor="{StaticResource TextColor}"
+                        BackgroundColor="{StaticResource CardBackgroundColor}" />
+                
+                <Label Text="Grade" Style="{StaticResource SubHeaderLabel}" />
+                <Picker Title="Select Grade" 
+                        SelectedIndex="{Binding SelectedGradeIndex}"
+                        Style="{StaticResource StandardPicker}">
+                    <Picker.Items>
+                        <x:String>0</x:String>
+                        <x:String>2</x:String>
+                        <x:String>4</x:String>
+                        <x:String>7</x:String>
+                        <x:String>10</x:String>
+                        <x:String>12</x:String>
+                    </Picker.Items>
+                </Picker>
+                
+                <Button Text="Save Grade &amp; Next Student" 
+                        Command="{Binding NextStudentCommand}"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Style="{StaticResource PrimaryButton}" />
+            </VerticalStackLayout>
+        </Frame>
+        
+        <!-- Progress -->
+        <!-- Removed the label that was showing the number at the bottom -->
+        
+        <!-- Activity Indicator -->
+        <ActivityIndicator Grid.Row="7" 
+                          IsVisible="{Binding IsBusy}" 
+                          IsRunning="{Binding IsBusy}"
+                          HorizontalOptions="Center"
+                          Margin="10,5" />
+        
+    </Grid>
+
+</ContentPage> 

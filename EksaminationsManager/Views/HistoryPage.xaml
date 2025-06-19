@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="EksaminationsManager.Views.HistoryPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto, *">
+        
+        <!-- Back Button -->
+        <Button Grid.Row="0" 
+                Text="← Back" 
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource BackButton}"
+                Margin="10,5" />
+        
+        <!-- Exams List -->
+        <CollectionView Grid.Row="1" 
+                        ItemsSource="{Binding Exams}"
+                        Margin="10,5">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Style="{StaticResource CardFrame}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.OpenExamDetailsCommand}"
+                                                  CommandParameter="{Binding Id}" />
+                        </Frame.GestureRecognizers>
+                        
+                        <Grid ColumnDefinitions="*, Auto, Auto">
+                            <!-- Exam Info -->
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="{Binding CourseName}" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TextColor}" />
+                                <Label Text="{Binding ExamTerm}" 
+                                       FontSize="14" 
+                                       TextColor="{StaticResource TextSecondaryColor}" />
+                                <Label Text="{Binding Date, StringFormat='Date: {0:dd/MM/yyyy}'}" 
+                                       FontSize="12" 
+                                       TextColor="{StaticResource TextSecondaryColor}" />
+                                <Label Text="{Binding CompletedAt, StringFormat='Completed: {0:dd/MM/yyyy HH:mm}'}" 
+                                       FontSize="12" 
+                                       TextColor="{StaticResource TextSecondaryColor}" />
+                            </VerticalStackLayout>
+                            
+                            <!-- Students Count -->
+                            <VerticalStackLayout Grid.Column="1" 
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="Center"
+                                                Margin="10,0">
+                                <Label Text="{Binding Students.Count, StringFormat='{0}'}" 
+                                       FontSize="20" 
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TextColor}" />
+                                <Label Text="Students" 
+                                       FontSize="10" 
+                                       HorizontalOptions="Center"
+                                       TextColor="{StaticResource TextSecondaryColor}" />
+                            </VerticalStackLayout>
+                            
+                            <!-- Arrow -->
+                            <Label Grid.Column="2" 
+                                   Text="→" 
+                                   FontSize="24" 
+                                   VerticalOptions="Center"
+                                   TextColor="{StaticResource PrimaryColor}" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!-- Empty State -->
+        <VerticalStackLayout Grid.Row="1" 
+                            IsVisible="{Binding Exams.Count, Converter={StaticResource EqualToZeroConverter}}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+            <Label Text="📚" 
+                   FontSize="48" 
+                   HorizontalOptions="Center" />
+            <Label Text="No completed exams yet" 
+                   FontSize="18" 
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,0"
+                   TextColor="{StaticResource TextColor}" />
+            <Label Text="Complete an exam to see it here" 
+                   FontSize="14" 
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        
+    </Grid>
+
+</ContentPage> 

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Button Styles - ALL using PrimaryColor -->
+    <Style x:Key="PrimaryButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="SecondaryButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="DangerButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="WarningButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="20,10" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="BackButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="20,10" />
+    </Style>
+
+    <!-- Frame Styles -->
+    <Style x:Key="CardFrame" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+        <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="Padding" Value="15" />
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="HasShadow" Value="True" />
+    </Style>
+
+    <Style x:Key="HeaderFrame" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+
+    <!-- Label Styles -->
+    <Style x:Key="HeaderLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style x:Key="SubHeaderLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style x:Key="BodyLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style x:Key="CaptionLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextColor" Value="{StaticResource TextSecondaryColor}" />
+        <Setter Property="Margin" Value="10,2" />
+    </Style>
+
+    <!-- Entry Styles -->
+    <Style x:Key="StandardEntry" TargetType="Entry">
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextSecondaryColor}" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+    </Style>
+
+    <!-- Picker Styles -->
+    <Style x:Key="StandardPicker" TargetType="Picker">
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+    </Style>
+
+    <!-- DatePicker Styles -->
+    <Style x:Key="StandardDatePicker" TargetType="DatePicker">
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+    </Style>
+
+    <!-- TimePicker Styles -->
+    <Style x:Key="StandardTimePicker" TargetType="TimePicker">
+        <Setter Property="Margin" Value="10,5" />
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource CardBackgroundColor}" />
+    </Style>
+
+    <!-- Stepper Styles -->
+    <Style x:Key="StandardStepper" TargetType="Stepper">
+        <Setter Property="Margin" Value="10,5" />
+    </Style>
+
+</ResourceDictionary> 

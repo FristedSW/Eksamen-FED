@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="EksaminationsManager.Views.ExamsListPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto, *">
+        
+        <!-- Back Button -->
+        <Button Grid.Row="0" 
+                Text="← Back" 
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource BackButton}"
+                Margin="10,5" />
+        
+        <!-- Exams List -->
+        <CollectionView Grid.Row="1" 
+                        ItemsSource="{Binding Exams}"
+                        Margin="10,5">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Style="{StaticResource CardFrame}">
+                        <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto">
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="0">
+                                <Label Text="{Binding CourseName}" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextColor}" />
+                                <Label Text="{Binding ExamTerm}" FontSize="14" TextColor="{StaticResource TextSecondaryColor}" />
+                                <Label Text="{Binding Date, StringFormat='Date: {0:dd/MM/yyyy}'}" FontSize="12" TextColor="{StaticResource TextSecondaryColor}" />
+                                <Label Text="{Binding Students.Count, StringFormat='Students: {0}'}" FontSize="12" TextColor="{StaticResource TextSecondaryColor}" />
+                            </VerticalStackLayout>
+                            
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding StartTime, StringFormat='{0:hh\\:mm}'}" FontSize="16" TextColor="{StaticResource TextColor}" />
+                            </VerticalStackLayout>
+                            
+                            <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="2" Spacing="10" Margin="0,10,0,0">
+                                <Button Text="Add Students" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddStudentsForExamCommand}"
+                                        CommandParameter="{Binding Id}"
+                                        Style="{StaticResource PrimaryButton}"
+                                        HorizontalOptions="FillAndExpand" />
+                                
+                                <Button Text="Start Exam" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.StartExamForExamCommand}"
+                                        CommandParameter="{Binding Id}"
+                                        Style="{StaticResource PrimaryButton}"
+                                        HorizontalOptions="FillAndExpand" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!-- Empty State -->
+        <VerticalStackLayout Grid.Row="1" 
+                            IsVisible="{Binding Exams.Count, Converter={StaticResource EqualToZeroConverter}}"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+            <Label Text="📝" 
+                   FontSize="48" 
+                   HorizontalOptions="Center" />
+            <Label Text="No active exams" 
+                   FontSize="18" 
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,0"
+                   TextColor="{StaticResource TextColor}" />
+            <Label Text="Create an exam to get started" 
+                   FontSize="14" 
+                   TextColor="{StaticResource TextSecondaryColor}"
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        
+    </Grid>
+
+</ContentPage> 

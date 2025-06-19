@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Custom Colors - Dark Theme -->
+    <Color x:Key="PrimaryColor">#7B61FF</Color>
+    <Color x:Key="SecondaryColor">#512BD4</Color>
+    <Color x:Key="DangerColor">#DC3545</Color>
+    <Color x:Key="WarningColor">#FFC107</Color>
+    <Color x:Key="InfoColor">#17A2B8</Color>
+    <Color x:Key="LightColor">#F8F9FA</Color>
+    <Color x:Key="DarkColor">#343A40</Color>
+    <Color x:Key="GrayColor">#ADB5BD</Color>
+    <Color x:Key="BorderColor">#495057</Color>
+    <Color x:Key="BackgroundColor">#1A1A1A</Color>
+    <Color x:Key="CardBackgroundColor">#2D2D2D</Color>
+    <Color x:Key="TextColor">#FFFFFF</Color>
+    <Color x:Key="TextSecondaryColor">#ADB5BD</Color>
+    
+    <!-- Grade Colors -->
+    <Color x:Key="GradeExcellent">#28A745</Color>
+    <Color x:Key="GradeGood">#17A2B8</Color>
+    <Color x:Key="GradeAverage">#FFC107</Color>
+    <Color x:Key="GradePoor">#DC3545</Color>
+
+</ResourceDictionary> 

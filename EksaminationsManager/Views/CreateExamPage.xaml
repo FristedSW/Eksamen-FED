@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="EksaminationsManager.Views.CreateExamPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto">
+        
+        <!-- Back Button -->
+        <Button Grid.Row="0" 
+                Text="← Back" 
+                Command="{Binding GoBackCommand}"
+                Style="{StaticResource BackButton}"
+                Margin="10,5" />
+        
+        <Label Grid.Row="1" 
+               Text="Create New Exam" 
+               Style="{StaticResource HeaderLabel}" />
+        
+        <Entry Grid.Row="2" 
+               Placeholder="Exam Term (e.g., Summer 25)" 
+               Text="{Binding ExamTerm}"
+               Style="{StaticResource StandardEntry}" />
+        
+        <Entry Grid.Row="3" 
+               Placeholder="Course Name" 
+               Text="{Binding CourseName}"
+               Style="{StaticResource StandardEntry}" />
+        
+        <Label Grid.Row="4" 
+               Text="Date:" 
+               Style="{StaticResource BodyLabel}" />
+        
+        <DatePicker Grid.Row="5" 
+                    Date="{Binding Date}"
+                    Style="{StaticResource StandardDatePicker}" />
+        
+        <Label Grid.Row="6" 
+               Text="Number of Questions:" 
+               Style="{StaticResource BodyLabel}" />
+        
+        <Stepper Grid.Row="7" 
+                 Value="{Binding NumberOfQuestions}" 
+                 Minimum="1" 
+                 Maximum="100"
+                 Style="{StaticResource StandardStepper}" />
+        
+        <Label Grid.Row="8" 
+               Text="{Binding NumberOfQuestions, StringFormat='Questions: {0}'}" 
+               Style="{StaticResource CaptionLabel}" />
+        
+        <Label Grid.Row="9" 
+               Text="Examination Time (minutes):" 
+               Style="{StaticResource BodyLabel}" />
+        
+        <Stepper Grid.Row="10" 
+                 Value="{Binding ExaminationTimeMinutes}" 
+                 Minimum="1" 
+                 Maximum="480"
+                 Style="{StaticResource StandardStepper}" />
+        
+        <Label Grid.Row="11" 
+               Text="{Binding ExaminationTimeMinutes, StringFormat='Time: {0} minutes'}" 
+               Style="{StaticResource CaptionLabel}" />
+        
+        <Label Grid.Row="12" 
+               Text="Start Time:" 
+               Style="{StaticResource BodyLabel}" />
+        
+        <TimePicker Grid.Row="13" 
+                    Time="{Binding StartTime}"
+                    Style="{StaticResource StandardTimePicker}" />
+        
+        <Button Grid.Row="14" 
+                Text="Create Exam" 
+                Command="{Binding CreateExamCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Style="{StaticResource PrimaryButton}"
+                HorizontalOptions="Fill"
+                Margin="10,5" />
+        
+        <ActivityIndicator Grid.Row="15" 
+                          IsVisible="{Binding IsBusy}" 
+                          IsRunning="{Binding IsBusy}"
+                          HorizontalOptions="Center"
+                          Margin="10,5" />
+        
+    </Grid>
+
+</ContentPage> 

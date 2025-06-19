@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="EksaminationsManager.Views.ExamDetailsModal"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Exam Details"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto, Auto, *, Auto">
+        
+        <!-- Header -->
+        <Frame Grid.Row="0" Style="{StaticResource HeaderFrame}">
+            <VerticalStackLayout>
+                <Label Text="{Binding Exam.CourseName}" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       TextColor="White" />
+                <Label Text="{Binding Exam.ExamTerm}" 
+                       FontSize="16" 
+                       TextColor="White" />
+                <Label Text="{Binding Exam.Date, StringFormat='Date: {0:dd/MM/yyyy}'}" 
+                       FontSize="14" 
+                       TextColor="White" />
+                <Label Text="{Binding Exam.CompletedAt, StringFormat='Completed: {0:dd/MM/yyyy HH:mm}'}" 
+                       FontSize="14" 
+                       TextColor="White" />
+            </VerticalStackLayout>
+        </Frame>
+        
+        <!-- Summary -->
+        <Frame Grid.Row="1" Style="{StaticResource CardFrame}">
+            <Grid ColumnDefinitions="*, *, *">
+                <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center">
+                    <Label Text="{Binding Results.Count, StringFormat='{0}'}" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource TextColor}" />
+                    <Label Text="Students" 
+                           FontSize="12" 
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource TextSecondaryColor}" />
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center">
+                    <Label Text="{Binding AverageGrade, StringFormat='{0:F1}'}" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource TextColor}" />
+                    <Label Text="Average Grade" 
+                           FontSize="12" 
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource TextSecondaryColor}" />
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center">
+                    <Label Text="{Binding AverageTime, StringFormat='{0:mm\\:ss}'}" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource TextColor}" />
+                    <Label Text="Avg Time" 
+                           FontSize="12" 
+                           HorizontalOptions="Center"
+                           TextColor="{StaticResource TextSecondaryColor}" />
+                </VerticalStackLayout>
+            </Grid>
+        </Frame>
+        
+        <!-- Results List -->
+        <CollectionView Grid.Row="2" 
+                        ItemsSource="{Binding Results}"
+                        Margin="10,5">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Style="{StaticResource CardFrame}">
+                        <Grid ColumnDefinitions="Auto, *, Auto, Auto, Auto">
+                            <!-- Student Number -->
+                            <Label Grid.Column="0" 
+                                   Text="{Binding Student.ExamOrder, StringFormat='#{0}'}" 
+                                   FontSize="16" 
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   Margin="0,0,10,0"
+                                   TextColor="{StaticResource TextColor}" />
+                            
+                            <!-- Student Info -->
+                            <VerticalStackLayout Grid.Column="1">
+                                <Label Text="{Binding Student.Name}" 
+                                       FontSize="16" 
+                                       FontAttributes="Bold"
+                                       TextColor="{StaticResource TextColor}" />
+                                <Label Text="{Binding Student.StudentId}" 
+                                       FontSize="12" 
+                                       TextColor="{StaticResource TextSecondaryColor}" />
+                                <Label Text="{Binding Notes}" 
+                                       FontSize="12" 
+                                       TextColor="{StaticResource TextSecondaryColor}"
+                                       IsVisible="{Binding Notes, Converter={StaticResource StringToBoolConverter}}" />
+                            </VerticalStackLayout>
+                            
+                            <!-- Question Number -->
+                            <Label Grid.Column="2" 
+                                   Text="{Binding QuestionNumber, StringFormat='Q{0}'}" 
+                                   VerticalOptions="Center"
+                                   Margin="10,0"
+                                   TextColor="{StaticResource TextColor}" />
+                            
+                            <!-- Time -->
+                            <Label Grid.Column="3" 
+                                   Text="{Binding ActualExaminationTime, StringFormat='{0:mm\\:ss}'}" 
+                                   VerticalOptions="Center"
+                                   Margin="10,0"
+                                   TextColor="{StaticResource TextColor}" />
+                            
+                            <!-- Grade -->
+                            <Label Grid.Column="4" 
+                                   Text="{Binding Grade}" 
+                                   FontSize="18" 
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   TextColor="{Binding Grade, Converter={StaticResource GradeToColorConverter}}" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+        <!-- Close Button -->
+        <Button Grid.Row="3" 
+                Text="Close" 
+                Command="{Binding CloseCommand}"
+                Style="{StaticResource PrimaryButton}"
+                Margin="20,10" />
+        
+    </Grid>
+
+</ContentPage> 
