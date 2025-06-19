@@ -1,29 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Home } from './components/Home';
+import { CreateExam } from './components/CreateExam';
+import { AddStudents } from './components/AddStudents';
+import { StartExam } from './components/StartExam';
+import { ViewHistory } from './components/ViewHistory';
 
 function App() {
   return (
-    <div className="text-center">
-      <header className="bg-gray-800 min-h-screen flex flex-col items-center justify-center text-white text-2xl">
-        <img 
-          src={logo} 
-          className="h-40 pointer-events-none animate-spin" 
-          style={{ animationDuration: '20s' }}
-          alt="logo" 
-        />
-        <p className="mt-8">
-          Edit <code className="font-mono bg-gray-700 px-2 py-1 rounded">src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="text-blue-400 hover:text-blue-300 transition-colors duration-200 mt-4"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="h-[calc(100vh-64px)] bg-gray-50 flex flex-col overflow-hidden">
+        {/* Navigation */}
+        <nav className="bg-blue-600 text-white shadow-lg fixed top-0 left-0 right-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between h-16">
+              <div className="flex items-center">
+                <Link to="/" className="text-xl font-bold">
+                  Exam Manager
+                </Link>
+              </div>
+              <div className="flex items-center space-x-4">
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        {/* Main Content */}
+        <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 mt-16 flex-1 flex flex-col overflow-hidden">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/create-exam" element={<CreateExam />} />
+            <Route path="/add-students" element={<AddStudents />} />
+            <Route path="/start-exam" element={<StartExam />} />
+            <Route path="/history" element={<ViewHistory />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 

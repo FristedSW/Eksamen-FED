@@ -1,0 +1,729 @@
+{
+  "exams": [
+    {
+      "id": "1",
+      "examTerm": "Summer 25",
+      "courseName": "Web Development",
+      "date": "2025-01-20",
+      "numberOfQuestions": 10,
+      "examinationTime": 15,
+      "startTime": "09:00",
+      "status": "completed"
+    },
+    {
+      "id": "2",
+      "examTerm": "123",
+      "courseName": "123",
+      "date": "1212-12-12",
+      "numberOfQuestions": 11,
+      "examinationTime": 15,
+      "startTime": "12:12",
+      "status": "completed"
+    },
+    {
+      "id": "1314",
+      "examTerm": "summerbreak soon",
+      "courseName": "FED",
+      "date": "2025-06-19",
+      "numberOfQuestions": 10,
+      "examinationTime": 15,
+      "startTime": "09:00",
+      "status": "completed"
+    },
+    {
+      "id": "5604",
+      "examTerm": "Summer",
+      "courseName": "Giv mig sommerferie ",
+      "date": "6222-01-16",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "12:02",
+      "status": "completed"
+    },
+    {
+      "id": "8e5f",
+      "examTerm": "adaw",
+      "courseName": "awda",
+      "date": "0112-12-12",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "12:01",
+      "status": "completed"
+    },
+    {
+      "id": "ab9a",
+      "examTerm": "fall24",
+      "courseName": "fed",
+      "date": "123123-03-12",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "12:23",
+      "status": "completed"
+    },
+    {
+      "id": "ef77",
+      "examTerm": "RE summer25",
+      "courseName": "DSB",
+      "date": "4567-03-12",
+      "numberOfQuestions": 7,
+      "examinationTime": 15,
+      "startTime": "03:04",
+      "status": "completed"
+    },
+    {
+      "id": "ab45",
+      "examTerm": "Summer2525",
+      "courseName": "HAL",
+      "date": "0131-03-12",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "12:22",
+      "status": "completed"
+    },
+    {
+      "id": "09db",
+      "examTerm": "dawd",
+      "courseName": "awda",
+      "date": "0013-03-12",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "12:03",
+      "status": "completed"
+    },
+    {
+      "id": "2671",
+      "examTerm": "Full year ",
+      "courseName": "SW Work",
+      "date": "1212-12-12",
+      "numberOfQuestions": 12,
+      "examinationTime": 12,
+      "startTime": "12:12",
+      "status": "completed"
+    },
+    {
+      "id": "dc9f",
+      "examTerm": "awd",
+      "courseName": "awd",
+      "date": "1212-03-12",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "12:02",
+      "status": "completed"
+    },
+    {
+      "id": "43e4",
+      "examTerm": "123",
+      "courseName": "123",
+      "date": "0121-03-12",
+      "numberOfQuestions": 12,
+      "examinationTime": 1,
+      "startTime": "12:03",
+      "status": "completed"
+    },
+    {
+      "id": "62c4",
+      "examTerm": "sound test",
+      "courseName": "alarm",
+      "date": "11111-11-11",
+      "numberOfQuestions": 11,
+      "examinationTime": 1,
+      "startTime": "11:11",
+      "status": "completed"
+    },
+    {
+      "id": "0189",
+      "examTerm": "sound test v2",
+      "courseName": "lelelelle",
+      "date": "1111-11-11",
+      "numberOfQuestions": 11,
+      "examinationTime": 1,
+      "startTime": "11:11",
+      "status": "completed"
+    },
+    {
+      "id": "6dff",
+      "examTerm": "123",
+      "courseName": "12",
+      "date": "0111-11-11",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "11:31",
+      "status": "completed"
+    },
+    {
+      "id": "436c",
+      "examTerm": "123",
+      "courseName": "123",
+      "date": "0011-11-11",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "11:01",
+      "status": "completed"
+    },
+    {
+      "id": "4e52",
+      "examTerm": "123",
+      "courseName": "123",
+      "date": "1111-11-11",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "11:11",
+      "status": "in-progress"
+    },
+    {
+      "id": "54dc",
+      "examTerm": "123",
+      "courseName": "123",
+      "date": "1111-11-11",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "11:11",
+      "status": "in-progress"
+    },
+    {
+      "id": "981c",
+      "examTerm": "121",
+      "courseName": "123",
+      "date": "111111-11-11",
+      "numberOfQuestions": 1,
+      "examinationTime": 15,
+      "startTime": "11:01",
+      "status": "created"
+    }
+  ],
+  "students": [
+    {
+      "id": "1",
+      "examId": 1,
+      "studentId": "S001",
+      "name": "John Doe",
+      "order": 1
+    },
+    {
+      "id": "2",
+      "examId": 1,
+      "studentId": "S002",
+      "name": "Jane Smith",
+      "order": 2
+    },
+    {
+      "id": "3",
+      "examId": 1,
+      "studentId": "12",
+      "name": "12",
+      "order": 3
+    },
+    {
+      "id": "ffd6",
+      "examId": "2",
+      "studentId": "s1",
+      "name": "adwa",
+      "order": 1
+    },
+    {
+      "id": "4e5d",
+      "examId": "2",
+      "studentId": "s2",
+      "name": "aw",
+      "order": 2
+    },
+    {
+      "id": "60bf",
+      "examId": "2",
+      "studentId": "s3",
+      "name": "qwe",
+      "order": 3
+    },
+    {
+      "id": "2aba",
+      "examId": "1314",
+      "studentId": "12345",
+      "name": "nowack",
+      "order": 1
+    },
+    {
+      "id": "fe5f",
+      "examId": "5604",
+      "studentId": "123",
+      "name": "adwd",
+      "order": 1
+    },
+    {
+      "id": "446d",
+      "examId": "8e5f",
+      "studentId": "123",
+      "name": "123",
+      "order": 1
+    },
+    {
+      "id": "d0e5",
+      "examId": "8e5f",
+      "studentId": "123",
+      "name": "123",
+      "order": 2
+    },
+    {
+      "id": "d4bb",
+      "examId": "ab9a",
+      "studentId": "1234",
+      "name": "maria",
+      "order": 1
+    },
+    {
+      "id": "47f5",
+      "examId": "ef77",
+      "studentId": "s001",
+      "name": "maria",
+      "order": 1
+    },
+    {
+      "id": "87b3",
+      "examId": "ef77",
+      "studentId": "s220",
+      "name": "hans",
+      "order": 2
+    },
+    {
+      "id": "1fdc",
+      "examId": "ef77",
+      "studentId": "s342",
+      "name": "grete",
+      "order": 3
+    },
+    {
+      "id": "6996",
+      "examId": "ab45",
+      "studentId": "123",
+      "name": "aads",
+      "order": 1
+    },
+    {
+      "id": "bf68",
+      "examId": "ab45",
+      "studentId": "5433",
+      "name": "ngf",
+      "order": 2
+    },
+    {
+      "id": "ee81",
+      "examId": "09db",
+      "studentId": "awda",
+      "name": "awda",
+      "order": 1
+    },
+    {
+      "id": "c12c",
+      "examId": "09db",
+      "studentId": "dawd",
+      "name": "awd",
+      "order": 2
+    },
+    {
+      "id": "33ba",
+      "examId": "2671",
+      "studentId": "122",
+      "name": "qwer",
+      "order": 1
+    },
+    {
+      "id": "3d44",
+      "examId": "2671",
+      "studentId": "12",
+      "name": "asdf",
+      "order": 2
+    },
+    {
+      "id": "6944",
+      "examId": "2671",
+      "studentId": "12",
+      "name": "zxcv",
+      "order": 3
+    },
+    {
+      "id": "7839",
+      "examId": "dc9f",
+      "studentId": "qwert",
+      "name": "qwert",
+      "order": 1
+    },
+    {
+      "id": "e43e",
+      "examId": "dc9f",
+      "studentId": "asdf",
+      "name": "asdf",
+      "order": 2
+    },
+    {
+      "id": "71d4",
+      "examId": "43e4",
+      "studentId": "123123",
+      "name": "aadsafsa",
+      "order": 1
+    },
+    {
+      "id": "c72e",
+      "examId": "62c4",
+      "studentId": "1111",
+      "name": "alarm test student",
+      "order": 1
+    },
+    {
+      "id": "0ca0",
+      "examId": "0189",
+      "studentId": "2222",
+      "name": "Marianne",
+      "order": 1
+    },
+    {
+      "id": "50ea",
+      "examId": "6dff",
+      "studentId": "111",
+      "name": "111",
+      "order": 1
+    },
+    {
+      "id": "9c12",
+      "examId": "436c",
+      "studentId": "1123",
+      "name": "123",
+      "order": 1
+    },
+    {
+      "id": "3afa",
+      "examId": "4e52",
+      "studentId": "123",
+      "name": "123",
+      "order": 1
+    },
+    {
+      "id": "ce37",
+      "examId": "54dc",
+      "studentId": "111",
+      "name": "111",
+      "order": 1
+    },
+    {
+      "id": "3be4",
+      "examId": "54dc",
+      "studentId": "11",
+      "name": "11",
+      "order": 2
+    },
+    {
+      "id": "f59d",
+      "examId": "54dc",
+      "studentId": "11",
+      "name": "11",
+      "order": 3
+    },
+    {
+      "id": "bf1c",
+      "examId": "981c",
+      "studentId": "1212",
+      "name": "1212",
+      "order": 1
+    }
+  ],
+  "examSessions": [
+    {
+      "id": "1",
+      "examId": 1,
+      "studentId": 1,
+      "questionNumber": 3,
+      "actualExaminationTime": 12,
+      "notes": "Good understanding of React concepts",
+      "grade": "7",
+      "completed": true
+    },
+    {
+      "id": "2",
+      "examId": 1,
+      "studentId": 1,
+      "questionNumber": 6,
+      "actualExaminationTime": 15,
+      "notes": "",
+      "grade": "02",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "examId": 1,
+      "studentId": 2,
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "",
+      "grade": "4",
+      "completed": true
+    },
+    {
+      "id": "4",
+      "examId": 1,
+      "studentId": 3,
+      "questionNumber": 10,
+      "actualExaminationTime": 15,
+      "notes": "",
+      "grade": "02",
+      "completed": true
+    },
+    {
+      "id": "bbae",
+      "examId": "2",
+      "studentId": "ffd6",
+      "questionNumber": 10,
+      "actualExaminationTime": 0,
+      "notes": "",
+      "grade": "10",
+      "completed": true
+    },
+    {
+      "id": "1d79",
+      "examId": "2",
+      "studentId": "4e5d",
+      "questionNumber": 2,
+      "actualExaminationTime": 0,
+      "notes": "dolan ",
+      "grade": "4",
+      "completed": true
+    },
+    {
+      "id": "bbed",
+      "examId": "2",
+      "studentId": "60bf",
+      "questionNumber": 5,
+      "actualExaminationTime": 15,
+      "notes": "1231",
+      "grade": "00",
+      "completed": true
+    },
+    {
+      "id": "1ebc",
+      "examId": "1314",
+      "studentId": "2aba",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "hes goood ",
+      "grade": "12",
+      "completed": true
+    },
+    {
+      "id": "45fe",
+      "examId": "5604",
+      "studentId": "fe5f",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "",
+      "grade": "02",
+      "completed": true
+    },
+    {
+      "id": "4423",
+      "examId": "8e5f",
+      "studentId": "446d",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "123",
+      "grade": "7",
+      "completed": true
+    },
+    {
+      "id": "ba26",
+      "examId": "8e5f",
+      "studentId": "446d",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "123",
+      "grade": "4",
+      "completed": true
+    },
+    {
+      "id": "c856",
+      "examId": "8e5f",
+      "studentId": "d0e5",
+      "questionNumber": 1,
+      "actualExaminationTime": 15,
+      "notes": "123",
+      "grade": "02",
+      "completed": true
+    },
+    {
+      "id": "2192",
+      "examId": "ab9a",
+      "studentId": "d4bb",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "very good ",
+      "grade": "12",
+      "completed": true
+    },
+    {
+      "id": "887e",
+      "examId": "ef77",
+      "studentId": "47f5",
+      "questionNumber": 2,
+      "actualExaminationTime": 1,
+      "notes": "its gonna be a long day",
+      "grade": "00",
+      "completed": true
+    },
+    {
+      "id": "5a36",
+      "examId": "ef77",
+      "studentId": "87b3",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "adwad",
+      "grade": "4",
+      "completed": true
+    },
+    {
+      "id": "bba3",
+      "examId": "ef77",
+      "studentId": "1fdc",
+      "questionNumber": 4,
+      "actualExaminationTime": 0,
+      "notes": "soooooo good",
+      "grade": "12",
+      "completed": true
+    },
+    {
+      "id": "0feb",
+      "examId": "ab45",
+      "studentId": "6996",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "123",
+      "grade": "7",
+      "completed": true
+    },
+    {
+      "id": "2441",
+      "examId": "ab45",
+      "studentId": "bf68",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "1312",
+      "grade": "00",
+      "completed": true
+    },
+    {
+      "id": "742f",
+      "examId": "09db",
+      "studentId": "ee81",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "awd",
+      "grade": "02",
+      "completed": true
+    },
+    {
+      "id": "c755",
+      "examId": "09db",
+      "studentId": "c12c",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "aadw",
+      "grade": "02",
+      "completed": true
+    },
+    {
+      "id": "f295",
+      "examId": "2671",
+      "studentId": "33ba",
+      "questionNumber": 9,
+      "actualExaminationTime": 0,
+      "notes": "hes SOOOOO goood ",
+      "grade": "12",
+      "completed": true
+    },
+    {
+      "id": "5290",
+      "examId": "2671",
+      "studentId": "3d44",
+      "questionNumber": 12,
+      "actualExaminationTime": 0,
+      "notes": "....long day",
+      "grade": "00",
+      "completed": true
+    },
+    {
+      "id": "94a3",
+      "examId": "2671",
+      "studentId": "6944",
+      "questionNumber": 7,
+      "actualExaminationTime": 0,
+      "notes": "eemhmhm ",
+      "grade": "4",
+      "completed": true
+    },
+    {
+      "id": "e35a",
+      "examId": "dc9f",
+      "studentId": "7839",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "123",
+      "grade": "10",
+      "completed": true
+    },
+    {
+      "id": "e10e",
+      "examId": "dc9f",
+      "studentId": "e43e",
+      "questionNumber": 1,
+      "actualExaminationTime": 0,
+      "notes": "awda",
+      "grade": "00",
+      "completed": true
+    },
+    {
+      "id": "0c37",
+      "examId": "43e4",
+      "studentId": "71d4",
+      "questionNumber": 6,
+      "actualExaminationTime": 13,
+      "notes": "fuck not enough time",
+      "grade": "4",
+      "completed": true
+    },
+    {
+      "id": "6f9f",
+      "examId": "62c4",
+      "studentId": "c72e",
+      "questionNumber": 10,
+      "actualExaminationTime": 74,
+      "notes": "not enough time.... its running out ",
+      "grade": "4",
+      "completed": true
+    },
+    {
+      "id": "f53f",
+      "examId": "0189",
+      "studentId": "0ca0",
+      "questionNumber": 10,
+      "actualExaminationTime": 69,
+      "notes": "i fell that time is moving fast today... but she did a good job ",
+      "grade": "10",
+      "completed": true
+    },
+    {
+      "id": "5fc6",
+      "examId": "6dff",
+      "studentId": "50ea",
+      "questionNumber": 1,
+      "actualExaminationTime": 1,
+      "notes": "",
+      "grade": "00",
+      "completed": true
+    },
+    {
+      "id": "e6e5",
+      "examId": "436c",
+      "studentId": "9c12",
+      "questionNumber": 1,
+      "actualExaminationTime": 17,
+      "notes": "",
+      "grade": "12",
+      "completed": true
+    }
+  ]
+}
