@@ -103,12 +103,18 @@ export const ViewHistory: React.FC = () => {
       <div className="bg-white rounded-lg shadow-md p-6 h-full overflow-auto">
         <div className="space-y-6">
           <PageHeader 
-            title={`Exam Results - ${selectedExam.courseName}`}
+            title={
+              <span className="flex items-center">
+                <i className="fas fa-chart-line mr-2"></i>
+                Exam Results - {selectedExam.courseName}
+              </span>
+            }
             children={
               <Button
                 variant="secondary"
                 onClick={() => navigate('/')}
               >
+                <i className="fas fa-arrow-left mr-2"></i>
                 Back to Home
               </Button>
             }

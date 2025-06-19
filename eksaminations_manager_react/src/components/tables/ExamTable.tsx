@@ -85,16 +85,25 @@ export const ExamTable: React.FC<ExamTableProps> = ({
                 {exam.status === 'created' && (
                   <>
                     <Link to={`/add-students?examId=${exam.id}`}>
-                      <Button variant="success" size="sm">Add Students</Button>
+                      <Button variant="success" size="sm">
+                        <i className="fas fa-user-plus mr-1"></i>
+                        Add Students
+                      </Button>
                     </Link>
                     <Link to={`/start-exam?examId=${exam.id}`}>
-                      <Button variant="primary" size="sm">Start Exam</Button>
+                      <Button variant="primary" size="sm">
+                        <i className="fas fa-play mr-1"></i>
+                        Start Exam
+                      </Button>
                     </Link>
                   </>
                 )}
                 {exam.status === 'in-progress' && (
                   <Link to={`/start-exam?examId=${exam.id}`}>
-                    <Button variant="primary" size="sm">Continue</Button>
+                    <Button variant="primary" size="sm">
+                      <i className="fas fa-arrow-right mr-1"></i>
+                      Continue
+                    </Button>
                   </Link>
                 )}
                 {exam.status === 'completed' && onViewResults && (
@@ -103,6 +112,7 @@ export const ExamTable: React.FC<ExamTableProps> = ({
                     size="sm" 
                     onClick={() => onViewResults(exam.id!)}
                   >
+                    <i className="fas fa-chart-bar mr-1"></i>
                     View Results
                   </Button>
                 )}

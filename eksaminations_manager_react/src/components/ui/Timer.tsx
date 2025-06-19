@@ -32,8 +32,23 @@ export const Timer: React.FC<TimerProps> = ({
         <div className={`text-4xl font-bold ${getTimerColor()}`}>
           {formatTimeFromSeconds(timeRemaining)}
         </div>
-        <div className="text-sm text-gray-600 mt-1">
-          {isExpired ? 'Time Expired' : isRunning ? 'Running' : 'Ready'}
+        <div className="text-sm text-gray-600 mt-1 flex items-center justify-center">
+          {isExpired ? (
+            <>
+              <i className="fas fa-exclamation-triangle mr-1"></i>
+              Time Expired
+            </>
+          ) : isRunning ? (
+            <>
+              <i className="fas fa-clock mr-1"></i>
+              Running
+            </>
+          ) : (
+            <>
+              <i className="fas fa-pause mr-1"></i>
+              Ready
+            </>
+          )}
         </div>
       </div>
     </div>

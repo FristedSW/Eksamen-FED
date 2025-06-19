@@ -64,7 +64,8 @@ export const AddStudentsPage: React.FC = () => {
     <div className="w-[1280px] mx-auto h-[700px] px-4 py-6 text-base">
       <div className="bg-white rounded-lg shadow-md p-4 h-full overflow-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-lg font-bold text-gray-900">
+          <h1 className="text-lg font-bold text-gray-900 flex items-center">
+            <i className="fas fa-user-plus mr-2"></i>
             {selectedExam ? `Add Students - ${selectedExam.courseName}` : 'Add Students'}
           </h1>
           <Button
@@ -72,6 +73,7 @@ export const AddStudentsPage: React.FC = () => {
             onClick={() => navigate('/')}
             className="mr-2"
           >
+            <i className="fas fa-arrow-left mr-2"></i>
             Back to Home
           </Button>
         </div>

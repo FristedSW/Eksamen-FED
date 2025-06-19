@@ -49,6 +49,7 @@ export const HomePage: React.FC = () => {
         children={
           <Link to="/create-exam">
             <Button variant="primary" size="sm">
+              <i className="fas fa-plus mr-2"></i>
               Create Exam
             </Button>
           </Link>

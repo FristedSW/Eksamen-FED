@@ -20,7 +20,14 @@ export const CreateExamPage: React.FC = () => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6">
-      <PageHeader title="Create New Exam" />
+      <PageHeader 
+        title={
+          <span className="flex items-center">
+            <i className="fas fa-plus-circle mr-2"></i>
+            Create New Exam
+          </span>
+        } 
+      />
       <CreateExamForm onSubmit={handleSubmit} isLoading={isSubmitting} />
     </div>
   );

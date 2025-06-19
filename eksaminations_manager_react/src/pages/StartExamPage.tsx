@@ -138,7 +138,10 @@ export const StartExam: React.FC = () => {
   return (
     <div className="w-[1280px] mx-auto h-[700px] px-4 py-6 text-sm">
       <div className="bg-white rounded-lg shadow-md p-4 h-full overflow-auto">
-        <h1 className="text-lg font-bold text-gray-900 mb-4">Start Exam</h1>
+        <h1 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+          <i className="fas fa-play-circle mr-2"></i>
+          Start Exam
+        </h1>
 
         {!isExamStarted ? (
           <>
@@ -179,13 +182,15 @@ export const StartExam: React.FC = () => {
                 {students.length === 0 && (
                   <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
                     <p className="text-yellow-800 text-sm mb-2">
-                      ⚠️ No students added yet. Please add students before starting the exam.
+                      <i className="fas fa-exclamation-triangle mr-1"></i>
+                      No students added yet. Please add students before starting the exam.
                     </p>
                     <Button
                       variant="success"
                       size="sm"
                       onClick={() => navigate(`/add-students?examId=${selectedExam.id}`)}
                     >
+                      <i className="fas fa-user-plus mr-1"></i>
                       Add Students
                     </Button>
                   </div>
@@ -197,6 +202,7 @@ export const StartExam: React.FC = () => {
                   variant="primary"
                   className="w-full"
                 >
+                  <i className="fas fa-play mr-2"></i>
                   {students.length === 0 ? 'No Students Added' : 'Start Exam'}
                 </Button>
               </Card>
@@ -262,6 +268,7 @@ export const StartExam: React.FC = () => {
             variant="secondary"
             onClick={() => navigate('/')}
           >
+            <i className="fas fa-arrow-left mr-2"></i>
             Back to Home
           </Button>
         </div>

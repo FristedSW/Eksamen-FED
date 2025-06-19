@@ -159,12 +159,14 @@ export const CreateExamForm: React.FC<CreateExamFormProps> = ({
             variant="secondary"
             onClick={() => navigate('/')}
           >
+            <i className="fas fa-times mr-2"></i>
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={isLoading}
           >
+            <i className="fas fa-plus-circle mr-2"></i>
             {isLoading ? 'Creating...' : 'Create Exam'}
           </Button>
         </div>

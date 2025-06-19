@@ -27,9 +27,15 @@ export const NotesGradeForm: React.FC<NotesGradeFormProps> = ({
   className = '',
 }) => {
   return (
-    <Card title="Notes & Grade" className={`w-full ${className}`}>
+    <Card title={
+      <span className="flex items-center">
+        <i className="fas fa-sticky-note mr-2"></i>
+        Notes & Grade
+      </span>
+    } className={`w-full ${className}`}>
       <div className="mb-2">
         <label htmlFor="notes" className="block text-xs font-medium text-gray-700 mb-1">
+          <i className="fas fa-edit mr-1"></i>
           Notes
         </label>
         <textarea
@@ -43,6 +49,7 @@ export const NotesGradeForm: React.FC<NotesGradeFormProps> = ({
       </div>
       <div className="mb-2">
         <label htmlFor="grade" className="block text-xs font-medium text-gray-700 mb-1">
+          <i className="fas fa-star mr-1"></i>
           Grade
         </label>
         <select
@@ -64,6 +71,7 @@ export const NotesGradeForm: React.FC<NotesGradeFormProps> = ({
             variant="danger"
             className="flex-1"
           >
+            <i className="fas fa-stop mr-2"></i>
             End Examination
           </Button>
         )}
@@ -73,6 +81,7 @@ export const NotesGradeForm: React.FC<NotesGradeFormProps> = ({
             variant="success"
             className="flex-1"
           >
+            <i className="fas fa-save mr-2"></i>
             Save & Continue
           </Button>
         )}

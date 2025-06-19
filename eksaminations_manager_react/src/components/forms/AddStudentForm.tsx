@@ -100,6 +100,7 @@ export const AddStudentForm: React.FC<AddStudentFormProps> = ({
             disabled={isLoading}
             className="w-full"
           >
+            <i className="fas fa-user-plus mr-2"></i>
             {isLoading ? 'Adding...' : 'Add Student'}
           </Button>
         </div>

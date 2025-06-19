@@ -24,13 +24,19 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   className = '',
 }) => {
   return (
-    <Card title="Question" className={`w-full ${className}`}>
+    <Card title={
+      <span className="flex items-center">
+        <i className="fas fa-question-circle mr-2"></i>
+        Question
+      </span>
+    } className={`w-full ${className}`}>
       {!questionNumber ? (
         <Button
           onClick={onDrawQuestion}
           variant="primary"
           className="w-full"
         >
+          <i className="fas fa-dice mr-2"></i>
           Draw Question
         </Button>
       ) : (
@@ -44,12 +50,14 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                 variant="success"
                 className="w-full"
               >
+                <i className="fas fa-clock mr-2"></i>
                 Start Examination
               </Button>
             </div>
           )}
           {timeExpired && (
             <div className="mt-2 text-center text-red-600 font-semibold text-xs">
+              <i className="fas fa-exclamation-triangle mr-1"></i>
               Time is up! Please end the examination and save the result.
             </div>
           )}
